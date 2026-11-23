@@ -1,6 +1,6 @@
 ---
 title: How this blog is built
-date: 2026-11-23 22:10:00 +0530
+date: 2026-11-23 11:30:00 +0530
 categories: [Meta]
 tags: [jekyll, github-pages, ci-cd]
 description: Chirpy theme, GitHub Actions build, aur naya post likhne ka poora process.
