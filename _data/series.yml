@@ -1,0 +1,24 @@
+# Blog series.
+# `category` must match the first category written in a post's front matter,
+# e.g. a post with `categories: [Bug Bounty, Recon]` belongs to the "Bug Bounty" series.
+# Order here is the order shown on the Series page.
+
+- name: Start Here
+  category: Start Here
+  description: How this blog is built, how posts are written, and what to expect.
+
+- name: Bug Bounty
+  category: Bug Bounty
+  description: Recon, attack surface mapping, field notes from hunts and how the reports were written.
+
+- name: Web Security
+  category: Web Security
+  description: Deep dives into vulnerability classes - access control, authentication, SSRF, injection, business logic.
+
+- name: Reverse Engineering
+  category: Reverse Engineering
+  description: Android apps, native binaries and protocols - how they work inside and how to take them apart.
+
+- name: AI Security
+  category: AI Security
+  description: Agents, MCP servers and automation, and where they actually help security work.

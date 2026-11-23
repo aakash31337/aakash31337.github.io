@@ -1,61 +1,62 @@
 ---
 title: How this blog is built
 date: 2026-11-23 11:30:00 +0530
-categories: [Meta]
+categories: [Start Here]
 tags: [jekyll, github-pages, ci-cd]
-description: Chirpy theme, GitHub Actions build, aur naya post likhne ka poora process.
+description: Chirpy theme, GitHub Actions build, and the exact steps for publishing a new post.
 ---
 
-Site [Jekyll](https://jekyllrb.com/) pe chalti hai, theme [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) hai, aur build GitHub Actions karta hai — GitHub ke built-in Jekyll builder se nahi.
+The site runs on [Jekyll](https://jekyllrb.com/) with the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme, and GitHub Actions does the build and deploy.
 
-## Structure
+## Repository layout
 
 ```text
 .
-├── _config.yml        # site ka poora config (title, url, avatar, tabs)
-├── _posts/            # blog posts (markdown)
-├── _tabs/             # About / Archives / Categories / Tags pages
-├── assets/img/        # images (avatar yahan hai)
+├── _config.yml        # site settings (title, url, avatar, tabs)
+├── _data/series.yml   # the series list shown on the Series page
+├── _posts/            # posts (markdown)
+├── _tabs/             # Series / Categories / Tags / Archives / About pages
+├── assets/img/        # images
 └── .github/workflows/ # build + deploy pipeline
 ```
 
-## Naya post likhna
+## Writing a post
 
-1. `_posts/` me file banao — naam ka format: `YYYY-MM-DD-title.md`
-2. Upar front matter daalo:
+1. Create a file in `_posts/` named `YYYY-MM-DD-title.md`.
+2. Add the front matter:
 
 ```yaml
 ---
 title: My new post
 date: 2026-11-24 10:00:00 +0530
-categories: [Web Security]
+categories: [Web Security, SSRF]   # first category = series
 tags: [ssrf, recon]
-description: One line summary for SEO and the post list.
+description: One line summary for search results and the post list.
 ---
 ```
 
-3. Markdown me content likho, `git push` karo. Actions khud build karke site update kar dega — 1-2 minute.
+3. Write the content in Markdown, then commit and push. The pipeline rebuilds the site in about a minute.
 
-## Local preview (optional)
+The **first category is the series**, the rest are sub-topics. A post with `categories: [Bug Bounty, Recon]` shows up under the Bug Bounty series and under the Recon sub-category.
 
-Local Ruby 3.1+ chahiye:
+## Useful front matter
 
-```bash
-bundle install
-bundle exec jekyll s
+| Field | Effect |
+|-------|--------|
+| `pin: true` | Sticks the post to the top of the home page |
+| `image: /assets/img/x.png` | Cover image |
+| `toc: false` | Hides the table of contents |
+| `math: true` | Enables math formulas |
+| `comments: false` | Disables comments for that post (off globally for now) |
+
+## Callouts
+
+```markdown
+> A tip.
+{: .prompt-tip }
 ```
 
-Sirf browser me dekhna ho to push karke live site check karna sabse aasan hai.
+`prompt-tip`, `prompt-info`, `prompt-warning` and `prompt-danger` all work.
 
-## Handy front matter
-
-| Field | Kaam |
-|-------|------|
-| `pin: true` | Post home page pe top pe chipak jaata hai |
-| `image: path` | Post ke top pe cover image |
-| `toc: false` | Right side ka table of contents band |
-| `comments: false` | Us post pe comments band (default hi off hai) |
-| `math: true` | MathJax formulas enable |
-
-> Config me comments, analytics, PWA sab already wired hai — bas `_config.yml` me value bhar dena.
+> Comments, analytics and the PWA are already wired up in `_config.yml` - they just need a value.
 {: .prompt-info }

@@ -1,31 +1,35 @@
 ---
 title: Hello, world
 date: 2026-11-23 10:00:00 +0530
-categories: [Meta]
-tags: [blog, security]
-description: Why this blog exists and what will land here.
+categories: [Start Here]
+tags: [blog, meta]
+description: Why this blog exists, what lands here, and how the series are organised.
 pin: true
 ---
 
-Ye pehla post hai. Blog ka maqsad simple hai: jo main seekhta hoon, usko likh kar rakhna — taaki baad me khud ke kaam aaye aur kisi aur ke bhi kaam aaye.
+This is the first post. The point of this blog is simple: write down what I learn while it is still fresh, so future me does not have to relearn it, and so someone else can skip the same dead ends.
 
-## What will show up here
+## What gets published here
 
-- **Bug bounty notes** — recon, interesting endpoints, chhoti-chhoti findings, aur woh baatein jo report me nahi likhi jaati.
-- **Web security** — authentication, access control, SSRF, deserialization, aur payload patterns jo kaam karte hain.
-- **Reverse engineering** — Android apps, binaries, aur "ye app andar se kaise chalti hai" wali cheezein.
-- **AI tooling** — agents, MCP servers, aur automation jo security work ko fast karti hai.
+The blog runs as series rather than one-off posts. Each series covers one area end to end:
+
+- **Bug Bounty** — recon, attack surface, and the small findings that never make it into a report.
+- **Web Security** — access control, authentication, SSRF, injection, business logic.
+- **Reverse Engineering** — Android apps, binaries, and how an app actually works inside.
+- **AI Security** — agents, MCP servers and automation that speed up security work.
+
+The current list, with every post in reading order, is on the [Series](/series/) page.
 
 ## How it is written
 
-Har post ek Markdown file hai. Code blocks, tables, callouts — sab support hai:
+Every post is a Markdown file in the repository, so code, tables and callouts all work:
 
 ```bash
-# recon ka pehla step
+# first step of any recon
 subfinder -d example.com -silent | httpx -silent
 ```
 
-> Koi cheez galat lage ya aage badhani ho, to post ke neeche **Edit this post** link se PR bhej dena.
+> If something here is wrong or can be extended, the **Edit this post** link at the bottom of each post opens the file on GitHub.
 {: .prompt-tip }
 
-Baaki posts `Archives` tab me milenge.
+Everything older than the current page is in [Archives](/archives/).

@@ -2,33 +2,47 @@
 
 Live site: **https://aakash31337.github.io**
 
-Jekyll + [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme, build aur deploy GitHub Actions se hota hai. Har `main` branch push pe site automatically update ho jaati hai.
+Jekyll + [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme. Build aur deploy GitHub Actions se hota hai — har `main` push pe site apne aap update ho jaati hai.
 
-## Naya post likhna (90% kaam yahi hai)
+## Blog ka structure: series
 
-1. `_posts/` folder me file banao. Naam ka format: `YYYY-MM-DD-kuch-bhi.md`
+Blog random posts ka collection nahi, **series** me chalta hai. Har series ek area cover karti hai aur posts usi order me padhne ke liye hain.
+
+Series list `_data/series.yml` me hai (Series page isi file se banti hai). Abhi ye series defined hain:
+
+| Series | Category value |
+|---|---|
+| Start Here | `Start Here` |
+| Bug Bounty | `Bug Bounty` |
+| Web Security | `Web Security` |
+| Reverse Engineering | `Reverse Engineering` |
+| AI Security | `AI Security` |
+
+Nayi series add karni ho to `_data/series.yml` me ek entry daal do — Series page khud update ho jaayega.
+
+## Naya post likhna
+
+1. `_posts/` me file banao: `YYYY-MM-DD-title.md`
    Example: `_posts/2026-12-01-ssrf-in-image-proxy.md`
-2. File ke sabse upar ye block daalo:
+2. Upar front matter — **pehla category hi series hai**:
 
 ```yaml
 ---
 title: SSRF in an image proxy
 date: 2026-12-01 20:00:00 +0530
-categories: [Web Security]
+categories: [Web Security, SSRF]   # [series, sub-topic]
 tags: [ssrf, recon]
 description: One line summary jo home page aur Google pe dikhegi.
 ---
 ```
 
-3. Neeche normal Markdown likho. Save karo, phir:
+3. Neeche Markdown likho, phir push:
 
 ```bash
-git add .
-git commit -m "post: ssrf in image proxy"
-git push
+git add . && git commit -m "post: ssrf in image proxy" && git push
 ```
 
-4. 1-2 minute me Actions build karega aur post live ho jaayega. Progress dekhne ke liye:
+4. 1-2 minute me live. Progress:
 
 ```bash
 gh run list --limit 3
@@ -45,7 +59,7 @@ gh run watch
 | `math: true` | Math formulas on |
 | `comments: false` | Us post pe comments off (global default already off) |
 
-Callouts Markdown me aise:
+Callouts:
 
 ```markdown
 > Ye ek tip hai.
@@ -56,7 +70,7 @@ Callouts Markdown me aise:
 
 ## Site settings
 
-Sab kuch `_config.yml` me hai:
+Sab `_config.yml` me:
 
 - `title`, `tagline`, `description` — branding
 - `avatar` — sidebar ki photo (`assets/img/avatar.png`)
@@ -65,7 +79,7 @@ Sab kuch `_config.yml` me hai:
 - `analytics` — Google Analytics / GoatCounter
 - `social.links` — Twitter, LinkedIn add karna ho to
 
-Tabs (About/Archives/Categories/Tags) `_tabs/` folder me hain. About page edit karne ke liye `_tabs/about.md`.
+Sidebar ke icons `_data/contact.yml` me hain (abhi GitHub + RSS). Email jaan-boojh kar hataya gaya hai — public site pe nahi chahiye.
 
 ## Local preview (optional)
 
@@ -77,7 +91,7 @@ bundle exec jekyll s
 # http://127.0.0.1:4000
 ```
 
-Docker se bhi chal sakta hai:
+Docker se:
 
 ```bash
 docker run --rm -it -p 4000:4000 -v "$PWD":/srv/jekyll -w /srv/jekyll ruby:3.4 \
@@ -90,19 +104,19 @@ docker run --rm -it -p 4000:4000 -v "$PWD":/srv/jekyll -w /srv/jekyll ruby:3.4 \
 
 1. Ruby 3.4 + gems install
 2. `jekyll build` → `_site`
-3. `htmlproofer` — internal links aur images check (external links skip)
+3. `htmlproofer` — internal links aur images check (external skip)
 4. Artifact upload → GitHub Pages deploy
 
-Agar build fail ho to `gh run view --log-failed` se error dekho.
+Build fail ho to: `gh run view --log-failed`
 
 ## Repo files
 
 ```text
 _config.yml           site config
-_posts/               blog posts
-_tabs/                About, Archives, Categories, Tags pages
+_data/series.yml      series list (Series page ka source)
 _data/contact.yml     sidebar ke social icons
-_data/share.yml       post ke share buttons
+_posts/               blog posts
+_tabs/                Series, Categories, Tags, Archives, About pages
 assets/img/           images
 .github/workflows/    build + deploy
 ```
