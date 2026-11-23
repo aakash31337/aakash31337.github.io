@@ -7,7 +7,7 @@ Jekyll + [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme. Build
 
 ## Abhi site pe kya hai
 
-- Logo: `assets/img/avatar.png` (sidebar) + `assets/img/logo.png` (social preview)
+- Logo: `assets/img/avatar.jpg` (sidebar) + `assets/img/logo.jpg` (social preview)
 - Favicon: `assets/img/favicons/`
 - Title/tagline: `aakash31337` / `Learn • Explore • Secure`
 - Koi post nahi hai — jab aap likhoge tab aayenge
@@ -76,8 +76,8 @@ Sidebar icons `_data/contact.yml` me hain (abhi GitHub + RSS). Email public site
 
 ## Logo badalna
 
-- Sidebar logo: `assets/img/avatar.png` replace karo (square, 512x512 best)
-- Social preview: `assets/img/logo.png` replace karo (1200x630 ya 3:2 best)
+- Sidebar logo: `assets/img/avatar.jpg` replace karo (square, 512x512 best)
+- Social preview: `assets/img/logo.jpg` replace karo (1200x800 / 3:2 best)
 - Favicon: `assets/img/favicons/` me saari files replace karo (96x96, 180x180, 192x192, 512x512, .ico, .svg)
 
 ## Local preview (optional)
