@@ -12,12 +12,12 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 0xNotes # the main title
+title: aakash31337 # the main title
 
-tagline: Security research, bug bounty notes & AI tooling # it will display as the subtitle
+tagline: Learn • Explore • Secure # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  Personal notes on web security, bug bounty hunting, reverse engineering and the AI tooling around them.
+  Learn • Explore • Secure
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -32,7 +32,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Aakash
+  name: aakash31337
   email: # optional, leave empty to hide it
   fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
   links:
@@ -95,7 +95,7 @@ cdn:
 avatar: /assets/img/avatar.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
-social_preview_image: /assets/img/avatar.png
+social_preview_image: /assets/img/logo.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true

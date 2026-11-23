@@ -1,48 +1,42 @@
-# 0xNotes — personal blog
+# aakash31337 — blog
 
 Live site: **https://aakash31337.github.io**
+Repo: https://github.com/aakash31337/aakash31337.github.io
 
 Jekyll + [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme. Build aur deploy GitHub Actions se hota hai — har `main` push pe site apne aap update ho jaati hai.
 
-## Blog ka structure: series
+## Abhi site pe kya hai
 
-Blog random posts ka collection nahi, **series** me chalta hai. Har series ek area cover karti hai aur posts usi order me padhne ke liye hain.
+- Logo: `assets/img/avatar.png` (sidebar) + `assets/img/logo.png` (social preview)
+- Favicon: `assets/img/favicons/`
+- Title/tagline: `aakash31337` / `Learn • Explore • Secure`
+- Koi post nahi hai — jab aap likhoge tab aayenge
+- Tabs: Categories, Tags, Archives (About page baad me add kar sakte hain)
 
-Series list `_data/series.yml` me hai (Series page isi file se banti hai). Abhi ye series defined hain:
-
-| Series | Category value |
-|---|---|
-| Start Here | `Start Here` |
-| Bug Bounty | `Bug Bounty` |
-| Web Security | `Web Security` |
-| Reverse Engineering | `Reverse Engineering` |
-| AI Security | `AI Security` |
-
-Nayi series add karni ho to `_data/series.yml` me ek entry daal do — Series page khud update ho jaayega.
+Series structure abhi nahi banaya gaya hai, kyunki series ke naam/areas aap define karoge. Jab bataoge, main Series page + categories uske hisaab se bana dunga.
 
 ## Naya post likhna
 
 1. `_posts/` me file banao: `YYYY-MM-DD-title.md`
-   Example: `_posts/2026-12-01-ssrf-in-image-proxy.md`
-2. Upar front matter — **pehla category hi series hai**:
+2. Front matter:
 
 ```yaml
 ---
-title: SSRF in an image proxy
+title: Post title
 date: 2026-12-01 20:00:00 +0530
-categories: [Web Security, SSRF]   # [series, sub-topic]
-tags: [ssrf, recon]
-description: One line summary jo home page aur Google pe dikhegi.
+categories: [Series Name, Sub Topic]
+tags: [tag-one, tag-two]
+description: One line summary for search results and the post list.
 ---
 ```
 
-3. Neeche Markdown likho, phir push:
+3. Markdown likho, phir push:
 
 ```bash
-git add . && git commit -m "post: ssrf in image proxy" && git push
+git add . && git commit -m "post: title" && git push
 ```
 
-4. 1-2 minute me live. Progress:
+4. 1-2 minute me live. Progress dekhne ke liye:
 
 ```bash
 gh run list --limit 3
@@ -68,18 +62,23 @@ Callouts:
 
 `prompt-tip`, `prompt-info`, `prompt-warning`, `prompt-danger` — chaaron chalte hain.
 
-## Site settings
-
-Sab `_config.yml` me:
+## Site settings (`_config.yml`)
 
 - `title`, `tagline`, `description` — branding
-- `avatar` — sidebar ki photo (`assets/img/avatar.png`)
+- `avatar` — sidebar ka logo
+- `social_preview_image` — WhatsApp/Twitter pe link share karne pe dikhne wali image
 - `theme_mode: dark` — default dark mode
 - `comments.provider` — Giscus/Utterances on karna ho to
 - `analytics` — Google Analytics / GoatCounter
 - `social.links` — Twitter, LinkedIn add karna ho to
 
-Sidebar ke icons `_data/contact.yml` me hain (abhi GitHub + RSS). Email jaan-boojh kar hataya gaya hai — public site pe nahi chahiye.
+Sidebar icons `_data/contact.yml` me hain (abhi GitHub + RSS). Email public site pe nahi hai.
+
+## Logo badalna
+
+- Sidebar logo: `assets/img/avatar.png` replace karo (square, 512x512 best)
+- Social preview: `assets/img/logo.png` replace karo (1200x630 ya 3:2 best)
+- Favicon: `assets/img/favicons/` me saari files replace karo (96x96, 180x180, 192x192, 512x512, .ico, .svg)
 
 ## Local preview (optional)
 
@@ -113,10 +112,9 @@ Build fail ho to: `gh run view --log-failed`
 
 ```text
 _config.yml           site config
-_data/series.yml      series list (Series page ka source)
+_posts/               blog posts (abhi khaali)
+_tabs/                Categories, Tags, Archives pages
 _data/contact.yml     sidebar ke social icons
-_posts/               blog posts
-_tabs/                Series, Categories, Tags, Archives, About pages
-assets/img/           images
+assets/img/           logo, avatar, favicons
 .github/workflows/    build + deploy
 ```
