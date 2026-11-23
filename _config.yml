@@ -118,9 +118,9 @@ assets:
     env: # [development | production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: false # PWA off: its service worker served stale pages after every deploy
   cache:
-    enabled: true # The option for PWA offline cache
+    enabled: false
     deny_paths:
 
 paginate: 10
