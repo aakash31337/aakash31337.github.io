@@ -6,7 +6,7 @@
 #
 # Every series gets a page at /series/<slug>/ that lists its posts in reading
 # order (oldest first). Optional description and ordering can be set in
-# _data/series.yml; without an entry the series is still created, ordered by
+# _data/series.yml; without an entry the series is still created and ordered by
 # its oldest post.
 
 module SeriesPages
@@ -33,8 +33,12 @@ module SeriesPages
         groups[categories.first.to_s] << post
       end
 
-      groups.each do |name, posts|
-        posts = posts.sort_by(&:date)
+      ordered = groups.map { |name, posts| [name, posts.sort_by(&:date)] }
+      ordered.sort_by! do |name, posts|
+        [meta.dig(name, "order") || 999, posts.first.date.to_time, name]
+      end
+
+      ordered.each_with_index do |(name, posts), index|
         slug = Jekyll::Utils.slugify(name)
         config = meta[name] || {}
 
@@ -47,6 +51,7 @@ module SeriesPages
           "series" => name,
           "series_description" => config["description"],
           "series_order" => config["order"] || 999,
+          "series_rank" => index + 1,
           "series_first_date" => posts.first.date,
           "posts" => posts
         )

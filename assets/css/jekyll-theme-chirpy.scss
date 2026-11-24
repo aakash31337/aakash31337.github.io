@@ -151,8 +151,16 @@ time {
   padding-top: 0.5rem;
 }
 
+/* the logo carries its own frame, so it is a rounded square, not a circle */
+#avatar,
+#avatar img {
+  border-radius: 0.85rem !important;
+}
+
 #avatar {
   box-shadow: 0 0 0 1px var(--line);
+  --avatar-border-color: var(--line);
+  overflow: hidden;
 }
 
 .site-title {
@@ -326,10 +334,36 @@ article .content h3 {
   margin-top: 1.9rem;
 }
 
-article .content blockquote {
+article .content blockquote:not([class^='prompt-']) {
   border-left: 2px solid var(--flare);
   color: var(--muted);
   padding-left: 1rem;
+}
+
+/* callouts keep the theme's icon slot, only the colour changes */
+article .content blockquote[class^='prompt-'] {
+  border-left: 2px solid currentColor;
+  border-radius: 0.4rem;
+}
+
+article .content blockquote.prompt-tip {
+  background-color: rgba(76, 201, 255, 0.07);
+  color: #b9e6ff;
+}
+
+article .content blockquote.prompt-info {
+  background-color: rgba(141, 147, 168, 0.1);
+  color: #d5d9e8;
+}
+
+article .content blockquote.prompt-warning {
+  background-color: rgba(240, 180, 90, 0.09);
+  color: #f0d6a8;
+}
+
+article .content blockquote.prompt-danger {
+  background-color: rgba(255, 110, 130, 0.09);
+  color: #ffc2c9;
 }
 
 article .content code.highlighter-rouge,
@@ -343,12 +377,23 @@ article .content li > code {
   font-size: 0.88em;
 }
 
+/* rouge sets its own background on .highlight, so match its specificity */
+:root[data-bs-theme='dark'] article .content .highlight,
+:root[data-bs-theme='dark'] article .content .highlight .w {
+  background-color: #0b0f1a;
+  color: #d7dbe8;
+}
+
 article .content div.highlight,
 article .content .highlight {
   border: 1px solid var(--line);
   border-left: 2px solid var(--beam);
   border-radius: 0.4rem;
-  background: #0b0f1a;
+  max-width: 100%;
+}
+
+article .content pre {
+  max-width: 100%;
 }
 
 article .content .code-header {
@@ -357,8 +402,14 @@ article .content .code-header {
 }
 
 article .content table {
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: transparent;
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.03);
   border-color: var(--line);
   font-size: 0.95rem;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 article .content thead th {
@@ -366,6 +417,7 @@ article .content thead th {
   font-family: var(--font-body);
   font-weight: 600;
   color: var(--ink);
+  background: transparent;
 }
 
 article .content tbody tr + tr {
@@ -493,6 +545,61 @@ article .content img {
 .series-empty {
   color: var(--muted);
   max-width: 46rem;
+}
+
+/* --------------------------------------------------- panels / related */
+
+#panel-wrapper .panel-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+#related-posts .card {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+#related-posts .card h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------- layout */
+
+/* flex items must be allowed to shrink, otherwise a wide table or a long
+   code line stretches the whole page on mobile */
+#main-wrapper,
+#main-wrapper .container,
+#main-wrapper .row,
+main {
+  min-width: 0;
+}
+
+article .content {
+  overflow-wrap: anywhere;
+}
+
+.series-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.series-title {
+  font-size: 2rem;
+  line-height: 1.15;
+  margin: 0 0 0.35rem;
+}
+
+.series-count {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
 }
 
 /* ---------------------------------------------------------- footer/search */

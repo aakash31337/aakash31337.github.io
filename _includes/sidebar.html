@@ -40,7 +40,7 @@
     </ul>
 
     <!-- series menu: one entry per series, generated from post categories -->
-    {% assign series_pages = site.pages | where: "layout", "series" | sort: "series_order" %}
+    {% assign series_pages = site.pages | where: "layout", "series" | sort: "series_rank" %}
     {% if series_pages.size > 0 %}
       <div class="nav-series">
         <p class="nav-series-label">{{ site.data.locales[include.lang].tabs.series | default: "Series" }}</p>

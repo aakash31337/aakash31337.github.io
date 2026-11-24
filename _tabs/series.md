@@ -6,7 +6,7 @@ order: 1
 
 Posts are grouped into series. A series is the first category of a post, so nothing has to be registered anywhere: publishing a post with `categories: [Series Name]` creates the series and its menu entry.
 
-{% assign series_pages = site.pages | where: "layout", "series" | sort: "series_order" %}
+{% assign series_pages = site.pages | where: "layout", "series" | sort: "series_rank" %}
 
 {% if series_pages.size > 0 %}
 <ul class="series-index">
