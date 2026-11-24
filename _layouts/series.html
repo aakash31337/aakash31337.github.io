@@ -1,0 +1,29 @@
+---
+layout: page
+---
+
+{{ content }}
+
+{% if page.series_description %}
+<p class="series-intro">{{ page.series_description }}</p>
+{% endif %}
+
+{% if page.posts.size > 0 %}
+<ol class="series-posts">
+  {% for post in page.posts %}
+  <li class="series-post">
+    <span class="series-post-index" aria-hidden="true">{{ forloop.index }}</span>
+    <div class="series-post-body">
+      <a class="series-post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.description %}<p class="series-post-desc">{{ post.description }}</p>{% endif %}
+      <p class="series-post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        {% if post.tags.size > 0 %}<span class="series-post-tags">{{ post.tags | join: " · " }}</span>{% endif %}
+      </p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+{% else %}
+<p class="series-empty">No posts in this series yet.</p>
+{% endif %}

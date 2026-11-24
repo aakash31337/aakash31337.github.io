@@ -1,0 +1,9 @@
+# Optional: per-series description and order for the Series page and the sidebar.
+#
+# You do not have to list a series here - every first category of a post becomes
+# a series automatically. Add an entry only when you want a description or a
+# fixed position in the menu.
+#
+# - name: Web Security          # must match the first category of the post
+#   description: Deep dives into vulnerability classes.
+#   order: 1
